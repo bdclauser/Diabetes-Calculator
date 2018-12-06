@@ -1,0 +1,3 @@
+/Users/brianclauser/Desktop/Diabetes Detection/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/brianclauser/Desktop/Diabetes Detection/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/brianclauser/Desktop/Diabetes Detection/cmake-build-debug/CMakeFiles/Diabetes_Detection.dir
