@@ -4,19 +4,17 @@
 
 #include "diabetes.h"
 #include <iostream>
-#include <stdio.h>
-#include <ctype.h>
-#include <ncurses.h>
+#include "ncurses.h"
 #include <SDL.h>
 #include <SDL_audio.h>
 #include <string>
 #include "SDL_mixer.h"
+#include "rlutil.h"
 
+using namespace std;
 
 bool init();
-
 bool loadAudio();
-
 void close();
 
 int main() {
@@ -61,19 +59,18 @@ int main() {
         }
     }
 
-    if (!init() ){
-        printf("Failed to initilize!\n");
-    } else{
+    if (!init()) {
+        printf("Failed to initialize!\n");
+    } else {
         bool quit = false;
         SDL_Event e;
 
         while (!quit) {
-            while(SDL_PollEvent(&e) != 0){
-                if (e.type == SDL_Quit){
+            while (SDL_PollEvent( &e ) != 0) {
+                if (e.type == SDL_Quit) {
                     quit = true;
-                }
-                else if (e.type == SDL_KEYDOWN){
-                    switch(e.key.keysym.sym){
+                } else if (e.type == SDL_KEYDOWN) {
+                    switch (e.key.keysym.sym) {
                         case SDLK_1:
                             Mix_PlayChannel(-1, gHigh, 0);
                             break;
@@ -93,10 +90,6 @@ int main() {
     }
     close();
     return 0;
-}
-
-void gotoxy(int x, int y) {
-    printf("%c[%d;%df", 0x1B, y, x);
 }
 
 
@@ -141,19 +134,19 @@ bool loadAudio() {
     return success;
 }
 
-void close(){
-Mix_FreeChunk(gScrath);
-Mix_FreeChunk(gHigh);
-Mix_FreeChunk(gMedium);
-Mix_FreeChunk(gLox);
-gScratch = NULL;
-gHigh = NULL;
-gMedium = NULL;
-gLow = NULL;
+void close() {
+    Mix_FreeChunk(gScrath);
+    Mix_FreeChunk(gHigh);
+    Mix_FreeChunk(gMedium);
+    Mix_FreeChunk(gLox);
+    gScratch = NULL;
+    gHigh = NULL;
+    gMedium = NULL;
+    gLow = NULL;
 
-Mix_Quit();
+    Mix_Quit();
 
-SDL_Quit();
+    SDL_Quit();
 }
 
 void diabetes::welcome_screen() {
@@ -167,9 +160,7 @@ void diabetes::welcome_screen() {
     init_pair(1, COLOR_GREEN, COLOR_BLACK);
 
     for (int x = 50; x >= 22; x--) {
-        sound(2000);
-        delay(120);
-        nosound();
+        loadAudio();
         gotoxy(x, 14);
         puts("D O N E  B Y :");
         gotoxy(x, 16);
@@ -182,5 +173,34 @@ void diabetes::welcome_screen() {
     puts("********** PRESS ANY KEY TO CONTINUE **********");
     getch();
     return;
+
+}
+
+void diabetes::getvalue() {
+    clear();
+    setColor(rlutil::WHITE);
+    gotoxy(20, 8);
+    puts("P E R S O N A L  I N F O R M A T I O N");
+    gotoxy(25, 10);
+    puts("N A M E: ");
+    gotoxy(25, 12);
+    puts("A G E: ");
+    gotoxy(25,14);
+    puts("W E I G H T:");
+    gotoxy(25,16);
+    puts("H E I G H T:");
+    gotoxy(25,18);
+    puts("S E X (M/F) : ");
+    setColor(rlutil::WHITE);
+    gotoxy(42,10);
+    gets(name);
+    gotoxy(42,12);
+    cin >> age;
+    gotoxy(42,14);
+    cin >> wt;
+    gotoxy(42,16);
+    cin >> ht;
+    gotoxy(42,18);
+    cin >> sex;
 
 }
