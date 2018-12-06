@@ -15,6 +15,11 @@
 
 int main() {
 
+    Mix_Chunk *gScratch = NULL;
+    Mix_Chunk *gHigh = NULL;
+    Mix_Chunk *gMedium = NULL;
+    Mix_Chunk *gLow = NULL;
+
     char ch, choice, cho;
     //int m,n=2;
     float m;
@@ -60,15 +65,55 @@ void gotoxy(int x, int y) {
 bool init() {
     if (SDL_Init(SDL_INIT_AUDIO) < 0) {
         printf("SDL could not initialize! SDL Error: %s\n", SDL_GetError());
-        return false;
+        success = false;
     }
 
     if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0) {
         printf("SDL_mixer could not initialize! SDL_mixer Error: %s\n", Mix_GetError());
-        return false;
+       success = false;
     }
 
-    return true;
+    return success;
+}
+
+boll loadSound(){
+    bool success = true;
+    // Load sound effects
+    gScratch = Mix_LoadWAV ("21_sound_effects_and_music/scratch.wav");
+    if (gScratch == NULL){
+        printf("Failed to load scratch sound effect! SDL_mixer Error: %s\n", Mix_GetError() );
+        success = false;
+    }
+    gHigh = Mix_LoadWAV ("21_sound_effects_and_music/scratch.wav");
+    if (gHigh == NULL){
+        printf("Failed to load scratch sound effect! SDL_mixer Error: %s\n", Mix_GetError() );
+        success = false;
+    }
+    gMedium = Mix_LoadWAV ("21_sound_effects_and_music/scratch.wav");
+    if (gMedium == NULL){
+        printf("Failed to load scratch sound effect! SDL_mixer Error: %s\n", Mix_GetError() );
+        success = false;
+    }
+    gLow = Mix_LoadWAV ("21_sound_effects_and_music/scratch.wav");
+    if (gLow == NULL){
+        printf("Failed to load scratch sound effect! SDL_mixer Error: %s\n", Mix_GetError() );
+        success = false;
+    }
+    return success;
+}
+
+void close();{
+    Mix_FreeChunk(gScrath);
+    Mix_FreeChunk(gHigh);
+    Mix_FreeChunk(gMedium);
+    Mix_FreeChunk(gLox);
+    gScratch = NULL;
+    gHigh = NULL;
+    gMedium = NULL;
+    gLow = NULL;
+
+    Mix_Quit();
+    SDL_Quit();
 }
 
 void diabetes::welcome_screen() {
@@ -85,6 +130,17 @@ void diabetes::welcome_screen() {
         sound(2000);
         delay(120);
         nosound();
+        gotoxy(x,14);
+        puts("D O N E  B Y :");
+        gotoxy(x,16);
+        puts("Brian D Clauser ");
+        gotoxy(43,18);
+
     }
+
+    gotoxy(17,25);
+    puts("********** PRESS ANY KEY TO CONTINUE **********");
+    getch();
+    return;
 
 }
