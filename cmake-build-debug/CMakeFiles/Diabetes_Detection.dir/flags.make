@@ -6,5 +6,5 @@ CXX_FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/Ma
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/usr/local/Cellar/sdl2/2.0.9/include/SDL2 
+CXX_INCLUDES = -I"/Users/brianclauser/Desktop/Diabetes Detection/INCLUDE" -I/usr/local/Cellar/sdl2/2.0.9/include/SDL2 
 
