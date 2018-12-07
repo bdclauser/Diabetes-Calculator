@@ -66,21 +66,6 @@
 	#include <sys/types.h> // for kbhit()
 	#include <sys/time.h> // for kbhit()
 
-/// Function: getch
-/// Get character without waiting for Return to be pressed.
-/// Windows has this in conio.h
-RLUTIL_INLINE int getch(void) {
-	// Here be magic.
-		struct termios oldt, newt;
-	int ch;
-	tcgetattr(STDIN_FILENO, &oldt);
-	newt = oldt;
-	newt.c_lflag &= ~(ICANON | ECHO);
-	tcsetattr(STDIN_FILENO, TCSANOW, &newt);
-	ch = getchar();
-	tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
-	return ch;
-};
 
 /// Function: kbhit
 /// Determines if keyboard has been hit.

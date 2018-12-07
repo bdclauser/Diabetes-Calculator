@@ -3,7 +3,7 @@ project(Diabetes_Detection)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Diabetes_Detection main.cpp diabetes.cpp diabetes.h)
+add_executable(Diabetes_Detection main.cpp diabetes.cpp diabetes.h gotoxy.h)
 
 find_package(SDL2 REQUIRED COMPONENTS SDL2::SDL2)
 

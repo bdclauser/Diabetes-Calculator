@@ -2,15 +2,17 @@
 // Created by Brian Clauser on 2018-12-06.
 //
 
+#include <iostream>
 #include "diabetes.h"
 #include <stdio.h>
-#include <ncurses.h>
+#include "ncurses.h"
 #include <SDL.h>
 #include <SDL_audio.h>
 #include "SDL_mixer.h"
-#include "rlutil.h"
+//#include "rlutil.h"
+#include "gotoxy.h"
 
-using namespace std;
+
 
 bool init();
 
@@ -18,6 +20,7 @@ void close();
 
 void diagnosis(void);
 
+using namespace std;
 //The music that will be played
 Mix_Music *gMusic = NULL;
 
@@ -26,6 +29,8 @@ Mix_Chunk *gScratch = NULL;
 Mix_Chunk *gHigh = NULL;
 Mix_Chunk *gMedium = NULL;
 Mix_Chunk *gLow = NULL;
+
+
 
 bool init() {
     bool success = true;
@@ -101,6 +106,15 @@ int main(int argc, char *args[]) {
     //int m,n=2;
     float m;
     int n = 1;
+
+    initscr();
+    if (has_colors() == FALSE) {
+        endwin();
+        printf("Your terminal does not support color\n");
+        exit(1);
+    }
+    start_color();
+    init_pair(1, COLOR_RED, COLOR_BLACK);
 
     diabetes dts;
     dts.welcome_screen();
@@ -216,7 +230,7 @@ void diabetes::welcome_screen() {
 
 void diabetes::getvalue() {
     clear();
-    setColor(rlutil::WHITE);
+    COLOR_PAIR(COLOR_WHITE);
     gotoxy(20, 8);
     puts("P E R S O N A L  I N F O R M A T I O N");
     gotoxy(25, 10);
@@ -229,7 +243,7 @@ void diabetes::getvalue() {
     puts("H E I G H T:");
     gotoxy(25, 18);
     puts("S E X (M/F) : ");
-    setColor(rlutil::WHITE);
+    COLOR_PAIR(COLOR_WHITE);
     gotoxy(42, 10);
     gets(name);
     gotoxy(42, 12);
@@ -246,7 +260,7 @@ void diabetes::getvalue() {
 
 void diagnosis(void) {
     clear();
-    setColor(rlutil::WHITE);
+    COLOR_PAIR(COLOR_WHITE);
     gotoxy(20, 5);
     puts(" **  D I A G N O S I S  W I N D O W **  ");
     cout << "\n\n\n";
@@ -254,7 +268,7 @@ void diagnosis(void) {
     cout << "\n\n\n";
     puts(" Please enter the form in the next page .");
     cout << "\n\n\n\n\n\n\t\t\t ";
-    setColor(rlutil::YELLOW);
+    COLOR_PAIR(COLOR_YELLOW);
     puts("***** PRESS ANY KEY ***** ");
     getch();
 }
@@ -263,7 +277,7 @@ void diabetes::getlevel1_symptoms(void) {
     clear();
     int i = 0;
     gotoxy(23, 3);
-    setColor(rlutil::WHITE);
+    COLOR_PAIR(COLOR_WHITE);
     puts(" *** MEDICAL DIAGNOSIS FORM ***");
     gotoxy(3, 6);
     puts("APPETITE (H(HIGH),/L(LOW),/N(NORMAL):");
@@ -539,6 +553,10 @@ void diabetes::getlevel3_symptoms() {
     cin >> s[k];
     s[k] = toupper(s[k]);
     ++k;
+
+    attroff(COLOR_PAIR(1));
+    getch();
+    endwin();
     return;
 }
 

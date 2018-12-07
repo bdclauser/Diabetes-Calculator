@@ -90,6 +90,9 @@
 		<Unit filename="/Users/brianclauser/Desktop/Diabetes Detection/diabetes.h">
 			<Option target="Diabetes_Detection"/>
 		</Unit>
+		<Unit filename="/Users/brianclauser/Desktop/Diabetes Detection/gotoxy.h">
+			<Option target="Diabetes_Detection"/>
+		</Unit>
 		<Unit filename="/Users/brianclauser/Desktop/Diabetes Detection/main.cpp">
 			<Option target="Diabetes_Detection"/>
 		</Unit>

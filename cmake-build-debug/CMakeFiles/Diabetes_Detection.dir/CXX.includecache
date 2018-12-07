@@ -27,17 +27,13 @@ close_code.h
 /Users/brianclauser/Desktop/Diabetes Detection/main.cpp
 diabetes.h
 /Users/brianclauser/Desktop/Diabetes Detection/diabetes.h
-iostream
--
 stdio.h
-/Users/brianclauser/Desktop/Diabetes Detection/stdio.h
+-
 ncurses.h
 /Users/brianclauser/Desktop/Diabetes Detection/ncurses.h
 SDL.h
 -
 SDL_audio.h
--
-string
 -
 SDL_mixer.h
 /Users/brianclauser/Desktop/Diabetes Detection/SDL_mixer.h

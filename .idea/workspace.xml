@@ -12,10 +12,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="61eeb49c-0bae-4e1d-9671-bcc0dcc70da8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/gotoxy.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Diabetes_Detection.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Diabetes_Detection.dir/CXX.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Progress/2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/diabetes.h" beforeDir="false" afterPath="$PROJECT_DIR$/diabetes.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Diabetes_Detection.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Diabetes_Detection.cbp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rlutil" beforeDir="false" afterPath="$PROJECT_DIR$/rlutil" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rlutil.h" beforeDir="false" afterPath="$PROJECT_DIR$/rlutil.h" afterDir="false" />
@@ -45,10 +46,22 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1063">
-              <caret line="46" column="24" selection-start-line="46" selection-start-column="24" selection-end-line="46" selection-end-column="24" />
+            <state relative-caret-position="261">
+              <caret line="110" column="8" selection-start-line="110" selection-start-column="8" selection-end-line="110" selection-end-column="8" />
               <folding>
-                <element signature="e#50#71#0" expanded="true" />
+                <element signature="e#50#69#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/gotoxy.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="206">
+              <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+              <folding>
+                <element signature="e#123#141#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -57,11 +70,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/rlutil.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-4198">
-              <caret line="42" column="13" lean-forward="true" selection-start-line="42" selection-start-column="13" selection-end-line="42" selection-end-column="13" />
+            <state relative-caret-position="160">
+              <caret line="95" column="20" selection-start-line="95" selection-start-column="14" selection-end-line="95" selection-end-column="20" />
               <folding>
                 <element signature="e#884#903#0" expanded="true" />
-                <element signature="e#1066#1232#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -97,6 +109,7 @@
       <find>set</find>
       <find>private</find>
       <find>getch</find>
+      <find>gotoxy</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -107,13 +120,14 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
-        <option value="$PROJECT_DIR$/rlutil.h" />
         <option value="$PROJECT_DIR$/diabetes.h" />
+        <option value="$PROJECT_DIR$/rlutil.h" />
+        <option value="$PROJECT_DIR$/gotoxy.h" />
         <option value="$PROJECT_DIR$/main.cpp" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="y" value="23" />
     <option name="width" value="1060" />
     <option name="height" value="961" />
@@ -180,12 +194,12 @@
       <option name="presentableId" value="Default" />
       <updated>1544118272296</updated>
       <workItem from="1544118275314" duration="4893000" />
-      <workItem from="1544123212447" duration="16064000" />
+      <workItem from="1544123212447" duration="18298000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20957000" />
+    <option name="totallyTimeSpent" value="23191000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -197,10 +211,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1060" height="961" extended-state="0" />
+    <frame x="0" y="23" width="1680" height="961" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21218075" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13186814" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info active="true" anchor="bottom" id="Messages" visible="true" weight="0.32911393" />
@@ -285,11 +299,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/rlutil.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4198">
-          <caret line="42" column="13" lean-forward="true" selection-start-line="42" selection-start-column="13" selection-end-line="42" selection-end-column="13" />
+        <state relative-caret-position="160">
+          <caret line="95" column="20" selection-start-line="95" selection-start-column="14" selection-end-line="95" selection-end-column="20" />
           <folding>
             <element signature="e#884#903#0" expanded="true" />
-            <element signature="e#1066#1232#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -301,12 +314,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/gotoxy.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="206">
+          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+          <folding>
+            <element signature="e#123#141#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1063">
-          <caret line="46" column="24" selection-start-line="46" selection-start-column="24" selection-end-line="46" selection-end-column="24" />
+        <state relative-caret-position="261">
+          <caret line="110" column="8" selection-start-line="110" selection-start-column="8" selection-end-line="110" selection-end-column="8" />
           <folding>
-            <element signature="e#50#71#0" expanded="true" />
+            <element signature="e#50#69#0" expanded="true" />
           </folding>
         </state>
       </provider>
