@@ -337,3 +337,174 @@ int diabetes::analyse_symptoms(int n) {
     return (result);
 }
 
+char diabetes::display_message(int n, int m) {
+    char ch;
+    clear();
+    switch (n) {
+        case 1:
+            switch (m);
+            {
+                case 0:
+                    gotoxy(30, 12);
+                puts("THE PERSON IS NOT DIABETIC");
+                gotoxy(50, 20);
+                puts("PRESS ANY KEY TO QUIT.");
+                // gotoxy(70,20);
+                //cin>>ch;
+                //break;
+                exit(0);
+
+                case -1:
+
+                    gotoxy(30, 20);
+                puts("THE PERSON IS DIABETIC ");
+                gotoxy(54, 20);
+                puts("PROCEED (Y/N)  ?");
+                gotoxy(70, 20);
+                cin >> ch;
+                break;
+
+                //  default: break;
+            }
+
+
+        case 2:
+            switch (m) {
+                case 0:
+                    gotoxy(30, 12);
+                    puts("IT IS PRIMARY DIABETES.");
+                    gotoxy(50, 25);
+                    puts("Proceed(Y/N)?");
+                    gotoxy(70, 25);
+                    cin >> ch;
+                    break;
+
+                case -1:
+                    gotoxy(30, 12);
+                    puts("IT IS SECONDARY DIABETES");
+                    gotoxy(50, 25);
+                    puts("PRESS ANY KEY TO QUIT");
+                    getch();
+                    break;
+
+            }
+            break;
+
+        case 3:
+            switch (m) {
+                case 0:
+                    gotoxy(30, 12);
+                    puts(" IT IS INSULIN DEPENDENT DIABETES");
+                    gotoxy(50, 25);
+                    puts("press any key to quit");
+                    getch();
+                    break;
+
+
+                case -1:
+                    gotoxy(30, 12);
+                    puts("IT IS NON INSULIN DEPENDENT DIABETES");
+                    gotoxy(50, 25);
+                    puts("PRESS ANY  KEY TO QUIT .");
+                    getch();
+                    break;
+
+                    //	   default: break;
+
+            }
+
+            // break ;
+            //	default : break;
+    }
+    return (ch);
+}
+
+void diabetes::getlevel2_symptoms()
+{
+    clear();
+    int j=0;
+    gotoxy(20,8);
+    puts("PANCREATITIS(P/A)  :");
+    gotoxy(60,8);
+    cin>>s[j];
+    s[j]=toupper(s[j]);
+    j++;
+    gotoxy(20,10);
+    puts("CARCINOMA(P/A)  :");
+    gotoxy(60,10);
+    cin>>s[j];
+    s[j]=toupper(s[j]);
+    ++j;
+    gotoxy(20,12);
+    puts("CIRHHOSIS(P/A)     :");
+    gotoxy(60,12);
+    cin>>s[j];
+    s[j]=toupper(s[j]);
+    ++j;
+    gotoxy(20,14);
+    puts(" HCTS  (H/L/N)     :");
+    gotoxy(60,14);
+    cin>>s[j];
+    s[j]=toupper(s[j]);
+    ++j;
+    gotoxy(20,16);
+    puts("HEPATITIS(P/A)    :");
+    gotoxy(60,16);
+    cin>>s[j];
+    s[j]=toupper(s[j]);
+    ++j;
+    gotoxy(20,18);
+    puts(" HORMONAL DISORDER(P/A):");
+
+    gotoxy(60,18);
+    cin>>s[j];
+    s[j]=toupper(s[j]);
+    ++j;
+    gotoxy(20,20);
+    puts(" PANCREATECTOMY(P/A) :");
+    gotoxy(60,20);
+    cin>>s[j];
+    s[j]=toupper(s[j]);
+    ++j;
+    return;
+}
+
+void diabetes::getlevel3_symptoms()
+{
+    int k=0;
+    clear();
+    gotoxy(10,8);
+    puts(" AGE(young(Y)/Middle aged(M)/Elderly(E))");
+    gotoxy(73,8);
+    cin>>s[k];
+    s[k]= toupper (s[k]);
+    ++k;
+    gotoxy(10,12);
+    puts("BODY WEIGHT(normal(N)/Above normal(A)/Below normal(B)/obese)");
+    gotoxy(73,12);
+    cin>>s[k];
+    s[k]= toupper(s[k]);
+    ++k;
+    gotoxy(10,16);
+    puts(" DURATION (weeks(W)/Months(M)/Years(Y))");
+    gotoxy(73,16);
+    cin>>s[k];
+    s[k]= toupper(s[k]);
+    ++k;
+
+    gotoxy(10,20);
+    puts("KETONUREA(P/A)");
+    gotoxy(73,20);
+    cin>>s[k];
+    s[k]= toupper(s[k]);
+    ++k;
+    gotoxy(10,24);
+    puts("AUTO ANTIBODIES(P/A)");
+    gotoxy(73,24);
+    cin>>s[k];
+    s[k]= toupper(s[k]);
+    ++k;
+    return;
+}
+
+
