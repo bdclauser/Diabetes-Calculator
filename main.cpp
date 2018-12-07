@@ -14,7 +14,9 @@
 using namespace std;
 
 bool init();
+
 bool loadAudio();
+
 void close();
 
 int main() {
@@ -66,7 +68,7 @@ int main() {
         SDL_Event e;
 
         while (!quit) {
-            while (SDL_PollEvent( &e ) != 0) {
+            while (SDL_PollEvent(&e) != 0) {
                 if (e.type == SDL_Quit) {
                     quit = true;
                 } else if (e.type == SDL_KEYDOWN) {
@@ -185,22 +187,22 @@ void diabetes::getvalue() {
     puts("N A M E: ");
     gotoxy(25, 12);
     puts("A G E: ");
-    gotoxy(25,14);
+    gotoxy(25, 14);
     puts("W E I G H T:");
-    gotoxy(25,16);
+    gotoxy(25, 16);
     puts("H E I G H T:");
-    gotoxy(25,18);
+    gotoxy(25, 18);
     puts("S E X (M/F) : ");
     setColor(rlutil::WHITE);
-    gotoxy(42,10);
+    gotoxy(42, 10);
     gets(name);
-    gotoxy(42,12);
+    gotoxy(42, 12);
     cin >> age;
-    gotoxy(42,14);
+    gotoxy(42, 14);
     cin >> wt;
-    gotoxy(42,16);
+    gotoxy(42, 16);
     cin >> ht;
-    gotoxy(42,18);
+    gotoxy(42, 18);
     cin >> sex;
     getch();
     return;
@@ -209,13 +211,13 @@ void diabetes::getvalue() {
 void diagnosis(void) {
     clear();
     setColor(rlutil::WHITE);
-    gotoxy(20,5);
+    gotoxy(20, 5);
     puts(" **  D I A G N O S I S  W I N D O W **  ");
     cout << "\n\n\n";
     puts(" Let's have a look at symptoms...........");
     cout << "\n\n\n";
     puts(" Please enter the form in the next page .");
-    cout<<"\n\n\n\n\n\n\t\t\t ";
+    cout << "\n\n\n\n\n\n\t\t\t ";
     setColor(rlutil::YELLOW);
     puts("***** PRESS ANY KEY ***** ");
     getch();
@@ -223,4 +225,115 @@ void diagnosis(void) {
 
 void diabetes::getlevel1_symptoms(void) {
     clear();
+    int i = 0;
+    gotoxy(23, 3);
+    setColor(rlutil::WHITE);
+    puts(" *** MEDICAL DIAGNOSIS FORM ***");
+    gotoxy(3, 6);
+    puts("APPETITE (H(HIGH),/L(LOW),/N(NORMAL):");
+    gotoxy(64, 6);
+    cin >> s[i];
+    s[i] = toupper(s[i]);
+    ++i;
+    gotoxy(3, 8);
+    puts("FREQUENCY OF THIRST(H(HIGH),/L(LOW),/N(NORMAL):");
+    gotoxy(64, 8);
+    cin >> s[i];
+    s[i] = toupper(s[i]);
+    ++i;
+    gotoxy(3, 10);
+    puts("FREQUENCY OF URINATION(H(HIGH),/L(LOW),/N(NORMAL):");
+    gotoxy(64, 10);
+    cin >> s[i];
+    s[i] = toupper(s[i]);
+    ++i;
+    gotoxy(3, 12);
+    puts("VISION (I(IMPAIRMENT),/N(NORMAL)");
+    gotoxy(64, 12);
+    cin >> s[i];
+    s[i] = toupper(s[i]);
+    ++i;
+    gotoxy(3, 14);
+    puts("URINE SUGAR (P(PASSIVE),/A(ACTIVE);");
+    gotoxy(64, 14);
+    cin >> s[i];
+    s[i] = toupper(s[i]);
+    ++i;
+    gotoxy(3, 16);
+    puts("KETONUREA(P(PASSIVE),/A(ACTIVE)");
+    gotoxy(64, 16);
+    cin >> s[i];
+    s[i] = toupper(s[i]);
+    ++i;
+    gotoxy(3, 18);
+    puts("FASTING BLOOD SUGAR(H(HIGH)/L(LOW)/N(NOMAL)");
+    gotoxy(64, 18);
+    cin >> s[i];
+    s[i] = toupper(s[i]);
+    ++i;
+    gotoxy(3, 20);
+    puts("R B S (H(HIGH)/L(LOW)/N(NORMAL)");
+    gotoxy(64, 20);
+    cin >> s[i];
+    s[i] = toupper(s[i]);
+    ++i;
+    gotoxy(3, 22);
+    puts("FAMILY HISTORY OF DIABETES(P(PASSIVE)/A(ACTIVE)");
+    gotoxy(64, 22);
+    cin >> s[i];
+    s[i] = toupper(s[i]);
+    ++i;
+    gotoxy(3, 24);
+    puts("OGTT(D/N)");
+    gotoxy(64, 24);
+    cin >> s[i];
+    s[i] = toupper(s[i]);
+    ++i;
 }
+
+int diabetes::analyse_symptoms(int n) {
+    int i = 0;
+    int count = 0;
+    int result = 0;
+
+    switch (n) {
+        case 1:
+            if (s[9] == 'D')
+                result = -1;
+            else if (s[5] == 'P' && s[6] == 'P' && s[7] == 'H')
+                result = -1;
+            else {
+                for (i = 0; i < 10; i++) {
+                    if (s[i] == 'H' || s[i] == 'P' || s[i] == 'D' || s[i] == 'I')
+                        count++;
+                }
+                if (count > 5)
+                    result = -1;
+            }
+            break;
+
+        case 2:
+            if ((s[0] == 'P') || (s[1] == 'P') || (s[2] == 'P') || (s[3] == 'H') || (s[4] == 'P') || (s[5] == 'P') ||
+                (s[6] == 'P'))
+                result = -1;
+            else
+                result = 0;
+            break;
+        case 3:
+            if ((s[0] == 'Y') && (s[1] == 'N') && (s[2] == 'W') && (s[3] == 'P') && (s[4] == 'P') ||
+
+                (s[0] == 'Y') && (s[1] == 'B') && (s[2] == 'W') && (s[3] == 'P') && (s[4] == 'P') ||
+
+                (s[0] == 'Y') && (s[1] == 'N') && (s[2] == 'M') && (s[3] == 'P') && (s[4] == 'P') ||
+
+                (s[0] == 'Y') && (s[1] == 'N') && (s[2] == 'Y') && (s[3] == 'P') && (s[4] == 'P'))
+                result = 0;
+            else
+                result = -1;
+            break;
+        default:
+            break;
+    }
+    return (result);
+}
+

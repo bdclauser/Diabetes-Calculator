@@ -33,12 +33,8 @@ diabetes.h
 /Users/brianclauser/Desktop/Diabetes Detection/diabetes.h
 iostream
 -
-stdio.h
--
-ctype.h
--
 ncurses.h
--
+/Users/brianclauser/Desktop/Diabetes Detection/ncurses.h
 SDL.h
 -
 SDL_audio.h
