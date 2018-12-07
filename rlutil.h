@@ -71,7 +71,7 @@
 /// Windows has this in conio.h
 RLUTIL_INLINE int getch(void) {
 	// Here be magic.
-	struct termios oldt, newt;
+		struct termios oldt, newt;
 	int ch;
 	tcgetattr(STDIN_FILENO, &oldt);
 	newt = oldt;
@@ -80,7 +80,7 @@ RLUTIL_INLINE int getch(void) {
 	ch = getchar();
 	tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
 	return ch;
-}
+};
 
 /// Function: kbhit
 /// Determines if keyboard has been hit.

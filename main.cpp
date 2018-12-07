@@ -3,11 +3,10 @@
 //
 
 #include "diabetes.h"
-#include <iostream>
-#include "ncurses.h"
+#include <stdio.h>
+#include <ncurses.h>
 #include <SDL.h>
 #include <SDL_audio.h>
-#include <string>
 #include "SDL_mixer.h"
 #include "rlutil.h"
 
@@ -15,22 +14,94 @@ using namespace std;
 
 bool init();
 
-bool loadAudio();
-
 void close();
 
-int main() {
+void diagnosis(void);
 
-    Mix_Chunk *gScratch = NULL;
-    Mix_Chunk *gHigh = NULL;
-    Mix_Chunk *gMedium = NULL;
-    Mix_Chunk *gLow = NULL;
+//The music that will be played
+Mix_Music *gMusic = NULL;
+
+//The sound effects that will be used
+Mix_Chunk *gScratch = NULL;
+Mix_Chunk *gHigh = NULL;
+Mix_Chunk *gMedium = NULL;
+Mix_Chunk *gLow = NULL;
+
+bool init() {
+    bool success = true;
+
+    if (SDL_Init(SDL_INIT_AUDIO) < 0) {
+        printf("SDL could not initialize! SDL Error: %s\n", SDL_GetError());
+        success = false;
+    } else {
+        if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0) {
+            printf("SDL_mixer could not initialize! SDL_mixer Error: %s\n", Mix_GetError());
+            success = false;
+        }
+    }
+
+    return success;
+}
+
+bool loadAudio() {
+    bool success = true;
+
+    //Load sound effects
+    gScratch = Mix_LoadWAV("21_sound_effects_and_music/scratch.wav");
+    if (gScratch == NULL) {
+        printf("Failed to load scratch sound effect! SDL_mixer Error: %s\n", Mix_GetError());
+        success = false;
+    }
+
+    gHigh = Mix_LoadWAV("21_sound_effects_and_music/high.wav");
+    if (gHigh == NULL) {
+        printf("Failed to load high sound effect! SDL_mixer Error: %s\n", Mix_GetError());
+        success = false;
+    }
+
+    gMedium = Mix_LoadWAV("21_sound_effects_and_music/medium.wav");
+    if (gMedium == NULL) {
+        printf("Failed to load medium sound effect! SDL_mixer Error: %s\n", Mix_GetError());
+        success = false;
+    }
+
+    gLow = Mix_LoadWAV("21_sound_effects_and_music/low.wav");
+    if (gLow == NULL) {
+        printf("Failed to load low sound effect! SDL_mixer Error: %s\n", Mix_GetError());
+        success = false;
+    }
+
+    return success;
+}
+
+void close() {
+    //Free the sound effects
+    Mix_FreeChunk(gScratch);
+    Mix_FreeChunk(gHigh);
+    Mix_FreeChunk(gMedium);
+    Mix_FreeChunk(gLow);
+    gScratch = NULL;
+    gHigh = NULL;
+    gMedium = NULL;
+    gLow = NULL;
+
+    //Free the music
+    Mix_FreeMusic(gMusic);
+    gMusic = NULL;
+
+    //Quit SDL subsystems
+    Mix_Quit();
+    SDL_Quit();
+}
+
+
+int main(int argc, char *args[]) {
 
     char ch, choice, cho;
     //int m,n=2;
     float m;
     int n = 1;
-    void diagnosis(void);
+
     diabetes dts;
     dts.welcome_screen();
     dts.getvalue();
@@ -64,91 +135,56 @@ int main() {
     if (!init()) {
         printf("Failed to initialize!\n");
     } else {
-        bool quit = false;
-        SDL_Event e;
+        //Load media
+        if (!loadAudio()) {
+            printf("Failed to load media!\n");
+        } else {
+            //Main loop flag
+            bool quit = false;
 
-        while (!quit) {
-            while (SDL_PollEvent(&e) != 0) {
-                if (e.type == SDL_Quit) {
-                    quit = true;
-                } else if (e.type == SDL_KEYDOWN) {
-                    switch (e.key.keysym.sym) {
-                        case SDLK_1:
-                            Mix_PlayChannel(-1, gHigh, 0);
-                            break;
-                        case SDLK_2:
-                            Mix_PlayChannel(-1, gMedium, 0);
-                            break;
-                        case SDLK_3:
-                            Mix_PlayChannel(-1, gLow, 0);
-                            break;
-                        case SDLK_4:
-                            Mix_PlayChannel(-1, gScratch, 0);
-                            break;
+            //Event handler
+            SDL_Event e;
+
+            //While application is running
+            while (!quit) {
+                //Handle events on queue
+                while (SDL_PollEvent(&e) != 0) {
+                    //User requests quit
+                    if (e.type == SDL_QUIT) {
+                        quit = true;
+                    }
+                        //Handle key press
+                    else if (e.type == SDL_KEYDOWN) {
+                        switch (e.key.keysym.sym) {
+                            //Play high sound effect
+                            case SDLK_1:
+                                Mix_PlayChannel(-1, gHigh, 0);
+                                break;
+
+                                //Play medium sound effect
+                            case SDLK_2:
+                                Mix_PlayChannel(-1, gMedium, 0);
+                                break;
+
+                                //Play low sound effect
+                            case SDLK_3:
+                                Mix_PlayChannel(-1, gLow, 0);
+                                break;
+
+                                //Play scratch sound effect
+                            case SDLK_4:
+                                Mix_PlayChannel(-1, gScratch, 0);
+                                break;
+                        }
                     }
                 }
             }
         }
     }
+
     close();
+
     return 0;
-}
-
-
-bool init() {
-    bool success = true;
-
-    if (SDL_Init(SDL_INIT_AUDIO) < 0) {
-        printf("SDL could not initialize! SDL Error: %s\n", SDL_GetError());
-        success = false;
-    } else if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0) {
-        printf("SDL_mixer could not initialize! SDL_mixer Error: %s\n", Mix_GetError());
-        success = false;
-    }
-
-    return success;
-}
-
-bool loadAudio() {
-    bool success = true;
-
-    // Load sound effects
-    gScratch = Mix_LoadWAV ("21_sound_effects_and_music/scratch.wav");
-    if (gScratch == NULL) {
-        printf("Failed to load scratch sound effect! SDL_mixer Error: %s\n", Mix_GetError());
-        success = false;
-    }
-    gHigh = Mix_LoadWAV ("21_sound_effects_and_music/scratch.wav");
-    if (gHigh == NULL) {
-        printf("Failed to load scratch sound effect! SDL_mixer Error: %s\n", Mix_GetError());
-        success = false;
-    }
-    gMedium = Mix_LoadWAV ("21_sound_effects_and_music/scratch.wav");
-    if (gMedium == NULL) {
-        printf("Failed to load scratch sound effect! SDL_mixer Error: %s\n", Mix_GetError());
-        success = false;
-    }
-    gLow = Mix_LoadWAV ("21_sound_effects_and_music/scratch.wav");
-    if (gLow == NULL) {
-        printf("Failed to load scratch sound effect! SDL_mixer Error: %s\n", Mix_GetError());
-        success = false;
-    }
-    return success;
-}
-
-void close() {
-    Mix_FreeChunk(gScrath);
-    Mix_FreeChunk(gHigh);
-    Mix_FreeChunk(gMedium);
-    Mix_FreeChunk(gLox);
-    gScratch = NULL;
-    gHigh = NULL;
-    gMedium = NULL;
-    gLow = NULL;
-
-    Mix_Quit();
-
-    SDL_Quit();
 }
 
 void diabetes::welcome_screen() {
@@ -313,7 +349,8 @@ int diabetes::analyse_symptoms(int n) {
             break;
 
         case 2:
-            if ((s[0] == 'P') || (s[1] == 'P') || (s[2] == 'P') || (s[3] == 'H') || (s[4] == 'P') || (s[5] == 'P') ||
+            if ((s[0] == 'P') || (s[1] == 'P') || (s[2] == 'P') || (s[3] == 'H') || (s[4] == 'P') ||
+                (s[5] == 'P') ||
                 (s[6] == 'P'))
                 result = -1;
             else
@@ -419,90 +456,88 @@ char diabetes::display_message(int n, int m) {
     return (ch);
 }
 
-void diabetes::getlevel2_symptoms()
-{
+void diabetes::getlevel2_symptoms() {
     clear();
-    int j=0;
-    gotoxy(20,8);
+    int j = 0;
+    gotoxy(20, 8);
     puts("PANCREATITIS(P/A)  :");
-    gotoxy(60,8);
-    cin>>s[j];
-    s[j]=toupper(s[j]);
+    gotoxy(60, 8);
+    cin >> s[j];
+    s[j] = toupper(s[j]);
     j++;
-    gotoxy(20,10);
+    gotoxy(20, 10);
     puts("CARCINOMA(P/A)  :");
-    gotoxy(60,10);
-    cin>>s[j];
-    s[j]=toupper(s[j]);
+    gotoxy(60, 10);
+    cin >> s[j];
+    s[j] = toupper(s[j]);
     ++j;
-    gotoxy(20,12);
+    gotoxy(20, 12);
     puts("CIRHHOSIS(P/A)     :");
-    gotoxy(60,12);
-    cin>>s[j];
-    s[j]=toupper(s[j]);
+    gotoxy(60, 12);
+    cin >> s[j];
+    s[j] = toupper(s[j]);
     ++j;
-    gotoxy(20,14);
+    gotoxy(20, 14);
     puts(" HCTS  (H/L/N)     :");
-    gotoxy(60,14);
-    cin>>s[j];
-    s[j]=toupper(s[j]);
+    gotoxy(60, 14);
+    cin >> s[j];
+    s[j] = toupper(s[j]);
     ++j;
-    gotoxy(20,16);
+    gotoxy(20, 16);
     puts("HEPATITIS(P/A)    :");
-    gotoxy(60,16);
-    cin>>s[j];
-    s[j]=toupper(s[j]);
+    gotoxy(60, 16);
+    cin >> s[j];
+    s[j] = toupper(s[j]);
     ++j;
-    gotoxy(20,18);
+    gotoxy(20, 18);
     puts(" HORMONAL DISORDER(P/A):");
 
-    gotoxy(60,18);
-    cin>>s[j];
-    s[j]=toupper(s[j]);
+    gotoxy(60, 18);
+    cin >> s[j];
+    s[j] = toupper(s[j]);
     ++j;
-    gotoxy(20,20);
+    gotoxy(20, 20);
     puts(" PANCREATECTOMY(P/A) :");
-    gotoxy(60,20);
-    cin>>s[j];
-    s[j]=toupper(s[j]);
+    gotoxy(60, 20);
+    cin >> s[j];
+    s[j] = toupper(s[j]);
     ++j;
     return;
 }
 
-void diabetes::getlevel3_symptoms()
-{
-    int k=0;
+void diabetes::getlevel3_symptoms() {
+    int k = 0;
     clear();
-    gotoxy(10,8);
+    gotoxy(10, 8);
     puts(" AGE(young(Y)/Middle aged(M)/Elderly(E))");
-    gotoxy(73,8);
-    cin>>s[k];
-    s[k]= toupper (s[k]);
+    gotoxy(73, 8);
+    cin >> s[k];
+    s[k] = toupper(s[k]);
     ++k;
-    gotoxy(10,12);
+    gotoxy(10, 12);
     puts("BODY WEIGHT(normal(N)/Above normal(A)/Below normal(B)/obese)");
-    gotoxy(73,12);
-    cin>>s[k];
-    s[k]= toupper(s[k]);
+    gotoxy(73, 12);
+    cin >> s[k];
+    s[k] = toupper(s[k]);
     ++k;
-    gotoxy(10,16);
+    gotoxy(10, 16);
     puts(" DURATION (weeks(W)/Months(M)/Years(Y))");
-    gotoxy(73,16);
-    cin>>s[k];
-    s[k]= toupper(s[k]);
+    gotoxy(73, 16);
+    cin >> s[k];
+    s[k] = toupper(s[k]);
     ++k;
 
-    gotoxy(10,20);
+    gotoxy(10, 20);
     puts("KETONUREA(P/A)");
-    gotoxy(73,20);
-    cin>>s[k];
-    s[k]= toupper(s[k]);
+    gotoxy(73, 20);
+    cin >> s[k];
+    s[k] = toupper(s[k]);
     ++k;
-    gotoxy(10,24);
+    gotoxy(10, 24);
     puts("AUTO ANTIBODIES(P/A)");
-    gotoxy(73,24);
-    cin>>s[k];
-    s[k]= toupper(s[k]);
+    gotoxy(73, 24);
+    cin >> s[k];
+    s[k] = toupper(s[k]);
     ++k;
     return;
 }

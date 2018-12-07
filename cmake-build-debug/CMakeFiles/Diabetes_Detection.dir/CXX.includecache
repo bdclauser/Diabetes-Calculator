@@ -22,10 +22,6 @@ begin_code.h
 close_code.h
 /Users/brianclauser/Desktop/Diabetes Detection/close_code.h
 
-/Users/brianclauser/Desktop/Diabetes Detection/diabetes.cpp
-diabetes.h
-/Users/brianclauser/Desktop/Diabetes Detection/diabetes.h
-
 /Users/brianclauser/Desktop/Diabetes Detection/diabetes.h
 
 /Users/brianclauser/Desktop/Diabetes Detection/main.cpp
@@ -33,6 +29,8 @@ diabetes.h
 /Users/brianclauser/Desktop/Diabetes Detection/diabetes.h
 iostream
 -
+stdio.h
+/Users/brianclauser/Desktop/Diabetes Detection/stdio.h
 ncurses.h
 /Users/brianclauser/Desktop/Diabetes Detection/ncurses.h
 SDL.h

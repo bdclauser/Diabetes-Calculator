@@ -23,9 +23,7 @@ public:
     void getlevel3_symptoms(void);
     int analyse_symptoms(int);
     char display_message(int, int);
-    bool init();
     bool loadAudio();
-    void close();
 
 };
 
