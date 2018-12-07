@@ -12,16 +12,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="61eeb49c-0bae-4e1d-9671-bcc0dcc70da8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/21_sound_effects_and_music/beat.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/21_sound_effects_and_music/high.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/21_sound_effects_and_music/low.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/21_sound_effects_and_music/scratch.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rlutil.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Diabetes_Detection.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Diabetes_Detection.dir/depend.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/diabetes.h" beforeDir="false" afterPath="$PROJECT_DIR$/diabetes.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rlutil" beforeDir="false" afterPath="$PROJECT_DIR$/rlutil" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rlutil/example.c" beforeDir="false" afterPath="$PROJECT_DIR$/rlutil/example.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rlutil/rlutil.h" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/rlutil/test.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/rlutil/test.cpp" afterDir="false" />
@@ -48,8 +40,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-718">
-              <caret line="110" column="24" lean-forward="true" selection-start-line="110" selection-start-column="24" selection-end-line="110" selection-end-column="24" />
+            <state relative-caret-position="476">
+              <caret line="217" column="4" selection-start-line="217" selection-start-column="4" selection-end-line="217" selection-end-column="4" />
               <folding>
                 <element signature="e#50#71#0" expanded="true" />
               </folding>
@@ -110,10 +102,10 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds">
     <option name="y" value="23" />
-    <option name="width" value="1680" />
-    <option name="height" value="965" />
+    <option name="width" value="1078" />
+    <option name="height" value="961" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -177,17 +169,18 @@
       <option name="presentableId" value="Default" />
       <updated>1544118272296</updated>
       <workItem from="1544118275314" duration="4893000" />
-      <workItem from="1544123212447" duration="10494000" />
+      <workItem from="1544123212447" duration="11183000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15387000" />
+    <option name="totallyTimeSpent" value="16076000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1680" height="965" extended-state="6" />
+    <frame x="0" y="23" width="1078" height="961" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25274727" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2084942" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Messages" weight="0.3298969" />
@@ -199,7 +192,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="7" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" sideWeight="0.4993895" visible="true" weight="0.32875144" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" sideWeight="0.4993895" visible="true" weight="0.33026466" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50061053" side_tool="true" weight="0.32875144" />
       <window_info anchor="bottom" id="Version Control" order="10" weight="0.32911393" />
       <window_info anchor="bottom" id="CMake" order="11" weight="0.32875144" />
@@ -286,8 +279,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-718">
-          <caret line="110" column="24" lean-forward="true" selection-start-line="110" selection-start-column="24" selection-end-line="110" selection-end-column="24" />
+        <state relative-caret-position="476">
+          <caret line="217" column="4" selection-start-line="217" selection-start-column="4" selection-end-line="217" selection-end-column="4" />
           <folding>
             <element signature="e#50#71#0" expanded="true" />
           </folding>

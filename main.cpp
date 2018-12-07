@@ -202,5 +202,25 @@ void diabetes::getvalue() {
     cin >> ht;
     gotoxy(42,18);
     cin >> sex;
+    getch();
+    return;
+}
 
+void diagnosis(void) {
+    clear();
+    setColor(rlutil::WHITE);
+    gotoxy(20,5);
+    puts(" **  D I A G N O S I S  W I N D O W **  ");
+    cout << "\n\n\n";
+    puts(" Let's have a look at symptoms...........");
+    cout << "\n\n\n";
+    puts(" Please enter the form in the next page .");
+    cout<<"\n\n\n\n\n\n\t\t\t ";
+    setColor(rlutil::YELLOW);
+    puts("***** PRESS ANY KEY ***** ");
+    getch();
+}
+
+void diabetes::getlevel1_symptoms(void) {
+    clear();
 }
